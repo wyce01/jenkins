@@ -14,6 +14,7 @@
   tasks:
   - name: launch a temporary instance
     ec2:
+      region: "{{ region }}"
       key_name: "{{ key_name }}"
       image: "{{ image }}"
       group_id: "{{ security_grp }}"
@@ -43,6 +44,7 @@
   
   - name: Create AMI
     ec2_ami:
+      region: "{{ region }}"
       instance_id: "{{ ami_instance.tagged_instances.0.id }}"
       state: present
       name: my_new_ami
@@ -54,5 +56,6 @@
 
   - name: Terminate provisioned instance
     ec2:
+      region: "{{ region }}"
       instance_ids: "{{ ami_instance.tagged_instances.0.id }}"
       state: 'absent'
