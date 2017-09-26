@@ -13,7 +13,7 @@
    - ec2_vars.yml
   tasks:
   - name: launch a temporary instance
-    ec2
+    ec2:
       key_name: "{{ key_name }}"
       image: "{{ image }}"
       group_id: "{{ security_grp }}"
