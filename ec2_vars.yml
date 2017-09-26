@@ -1,0 +1,9 @@
+---
+aws_access_key: AKIAI4RSG72VLXDPZHIA
+aws_secret_key: 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
+region: us-east-1
+key_name: wyce
+image: ami-c998b6b2
+security_grp: sg-50415221
+instance_type: t2.micro
+subnet: subnet-82abcfd8
