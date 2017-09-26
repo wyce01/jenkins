@@ -53,8 +53,8 @@
       wait: yes
       launch_permissions:
        user_ids: "{{ user_id }}"
-      with_items:
-       - "{{ ami_instance.instances }}"
+    with_items:
+      - "{{ ami_instance.instances }}"
     register: amioutput
     ignore_errors: yes
 
@@ -63,5 +63,5 @@
       region: "{{ region }}"
       instance_ids: "{{ ami_instance.id }}"
       state: 'absent'
-      with_items:
-       - "{{ ami_instance.instances }}"
+    with_items:
+      - "{{ ami_instance.instances }}"
