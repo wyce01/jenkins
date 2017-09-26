@@ -47,21 +47,17 @@
   - name: Create AMI
     ec2_ami:
       region: "{{ region }}"
-      instance_id: "{{ ami_instance.id }}"
+      instance_id: "{{ ami_instance.tagged_instances.0.id }}"
       state: present
       name: my_new_ami
       wait: yes
       launch_permissions:
        user_ids: "{{ user_id }}"
-    with_items:
-      - "{{ ami_instance.instances }}"
     register: amioutput
     ignore_errors: yes
 
   - name: Terminate provisioned instance
     ec2:
       region: "{{ region }}"
-      instance_ids: "{{ ami_instance.id }}"
+      instance_ids: "{{ ami_instance.tagged_instances.0.id }}"
       state: 'absent'
-    with_items:
-      - "{{ ami_instance.instances }}"
